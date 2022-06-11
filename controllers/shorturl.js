@@ -18,7 +18,6 @@ function shorturl(req, res) {
   }
   uid = req.body.uid;
   shortUrlModel.findOne({ shorturl: shorturl }).then((result) => {
-    console.log(result);
     if (result == null) {
       shortUrlModel
         .create({

@@ -5,9 +5,9 @@ redirect = (req, res) => {
   const shorturl = req.params.shorturl;
   shortUrlModel.findOne({ shorturl: shorturl }).then((result) => {
     if (result == null) {
-      res.send("Invalid link");
+      res.send(`invalid link $shorturl`);
     } else {
-      console.log(result);
+    
       shortUrlModel
         .updateOne(
           { shorturl: shorturl },
@@ -17,7 +17,7 @@ redirect = (req, res) => {
           }
         )
         .then((updateresult) => {
-          res.send(result.longurl);
+          res.status(301).redirect("//" + result.longurl);
         });
     }
   });
