@@ -4,6 +4,8 @@ const signup = require("../controllers/Authentication/Api/signup");
 const tokencheck = require("../controllers/Authentication/tokencheck");
 const shorturl = require("../controllers/shorturl");
 const redirect = require("../controllers/redirect");
+const getAllUrls = require("../controllers/geturls.js");
+const editLongurl = require("../controllers/editlongurl.js");
 var router = express.Router();
 
 router.get("/app/signup", signup);
@@ -14,4 +16,6 @@ router.get("/", (req, res) => {
 });
 router.use(tokencheck);
 router.post("/app/shorturl", shorturl);
+router.get("/app/getallurls", getAllUrls);
+router.post("/app/editlongurl", editLongurl);
 module.exports = router;

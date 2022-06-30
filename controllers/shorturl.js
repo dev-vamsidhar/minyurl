@@ -31,7 +31,9 @@ function shorturl(req, res) {
           });
         });
     } else {
-      res.send("Short name already exists. Try other sequence");
+      res.json({
+        status: "ShortUrl already exists",
+      });
     }
   });
 }
