@@ -1,6 +1,7 @@
 const Auth = require("../../../models/Authentication/authmodel");
 const jwt = require("jsonwebtoken");
 function login(req, res) {
+  console.log(req.query);
   uid = req.query.uid;
   password = req.query.password;
   if (uid === undefined) {
