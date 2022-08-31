@@ -8,16 +8,15 @@ function login(req, res) {
   } else if (password === undefined) {
     res.status(403).send("Password is not provided");
   }
-  Auth.findOne({ uid: uid }).then((result) => {
+  Auth.findOne({ uid: uid }).then(
+    (result) => {
     console.log(result);
     if (!result) {
       res.status(403).send({
         status: "User not found",
-        uid: result._doc.uid,
       });
       return;
-    }
-    if (result._doc.password === password) {
+    } else if (result._doc.password === password) {
       const token = jwt.sign(
         {
           uid: uid,
