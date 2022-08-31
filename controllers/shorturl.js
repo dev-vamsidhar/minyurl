@@ -15,6 +15,12 @@ function shorturl(req, res) {
   shorturl = req.body.shorturl;
   if (longurl === "") {
     res.status(200).send({ status: "LongUrl feild is not optional" });
+    return;
+  }
+  if (req.body.uid === "") {
+    res
+      .status(200)
+      .send({ status: "Something went wrong. Please logout and login back" });
   }
   if (shorturl === "") {
     shorturl = makeid(6);
