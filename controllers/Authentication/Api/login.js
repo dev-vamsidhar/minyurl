@@ -4,15 +4,14 @@ function login(req, res) {
   uid = req.query.uid;
   password = req.query.password;
   if (uid === undefined) {
-    res.status(403).send("No Email id is provided");
+    res.status(200).send({ status: "No Email id is provided" });
   } else if (password === undefined) {
-    res.status(403).send("Password is not provided");
+    res.status(200).send({ status: "Password is not provided" });
   }
-  Auth.findOne({ uid: uid }).then(
-    (result) => {
+  Auth.findOne({ uid: uid }).then((result) => {
     console.log(result);
     if (!result) {
-      res.status(403).send({
+      res.status(200).send({
         status: "User not found",
       });
       return;
