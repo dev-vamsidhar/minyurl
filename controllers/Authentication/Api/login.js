@@ -1,7 +1,6 @@
 const Auth = require("../../../models/Authentication/authmodel");
 const jwt = require("jsonwebtoken");
 function login(req, res) {
-  console.log(req.query);
   uid = req.query.uid;
   password = req.query.password;
   if (uid === undefined) {
@@ -10,8 +9,13 @@ function login(req, res) {
     res.status(403).send("Password is not provided");
   }
   Auth.findOne({ uid: uid }).then((result) => {
-    if (result == null) {
-      res.status(403).send("User not found");
+    console.log(result);
+    if (!result) {
+      res.status(403).send({
+        status: "User not found",
+        uid: result._doc.uid,
+      });
+      return;
     }
     if (result._doc.password === password) {
       const token = jwt.sign(
