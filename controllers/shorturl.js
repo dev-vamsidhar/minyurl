@@ -13,6 +13,9 @@ function makeid(length) {
 function shorturl(req, res) {
   longurl = req.body.longurl;
   shorturl = req.body.shorturl;
+  if (longurl === "") {
+    res.status(200).send({ status: "LongUrl feild is not optional" });
+  }
   if (shorturl === "") {
     shorturl = makeid(6);
   }
@@ -26,12 +29,13 @@ function shorturl(req, res) {
           uid: uid,
         })
         .then((result) => {
-          res.send({
+          res.status(200).send({
+            status: "Created Sucessfully",
             result,
           });
         });
     } else {
-      res.json({
+      res.status(200).json({
         status: "ShortUrl already exists",
       });
     }
