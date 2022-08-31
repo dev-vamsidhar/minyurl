@@ -21,6 +21,7 @@ function shorturl(req, res) {
     res
       .status(200)
       .send({ status: "Something went wrong. Please logout and login back" });
+    return;
   }
   if (shorturl === "") {
     shorturl = makeid(6);
@@ -39,11 +40,13 @@ function shorturl(req, res) {
             status: "Created Sucessfully",
             result,
           });
+          return;
         });
     } else {
       res.status(200).json({
         status: "ShortUrl already exists",
       });
+      return;
     }
   });
 }
