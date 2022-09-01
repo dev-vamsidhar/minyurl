@@ -3,12 +3,12 @@
   "builds": [{ "src": "app.js", "use": "@now/node-server" }],
   "routes": [
     {
-      "src": "/users",
+      "src": "/",
       "dest": "/app.js",
       "methods": ["GET"]
     },
     {
-      "src": "/user",
+      "src": "/",
       "dest": "/app.js",
       "methods": ["POST"]
     }
