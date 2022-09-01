@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 var cors = require("cors");
 require("./databse/dbconfig");
 require("dotenv").config();
@@ -9,10 +8,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
 var router = require("./routes/userroutes");
 app.use(router);
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server started at ${process.env.PORT}`);
+  // console.log(`Server started at ${process.env.PORT}`);
 });
