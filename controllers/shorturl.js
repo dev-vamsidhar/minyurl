@@ -13,9 +13,13 @@ function makeid(length) {
 function shorturl(req, res) {
   longurl = req.body.longurl;
   shorturl = req.body.shorturl;
+  title = req.body.title;
   if (longurl === "") {
     res.status(200).send({ status: "LongUrl feild is not optional" });
     return;
+  }
+  if (title == "") {
+    res.status(200).send({ status: "Name is required" });
   }
   if (req.body.uid === "") {
     res
@@ -33,6 +37,7 @@ function shorturl(req, res) {
         .create({
           shorturl: shorturl,
           longurl: longurl,
+          title: title,
           uid: uid,
         })
         .then((result) => {

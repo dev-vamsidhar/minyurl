@@ -15,6 +15,10 @@ var ShortUrlSchema = new Schema({
     type: String,
     required: true,
   },
+  title: {
+    type: String,
+    required: true,
+  },
   visits: {
     type: Number,
     default: 0,
