@@ -12,7 +12,7 @@ router.get("/app/signup", signup);
 router.get("/app/login", login);
 router.get("/:shorturl", redirect);
 router.get("/", (req, res) => {
-  res.send("website under construction v1.0");
+  res.send("website under construction v1.1");
 });
 router.use(tokencheck);
 router.post("/app/shorturl", shorturl);
