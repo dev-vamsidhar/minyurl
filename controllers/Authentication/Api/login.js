@@ -9,6 +9,7 @@ function login(req, res) {
   } else if (password === undefined) {
     res.status(200).send({ status: "Password is not provided" });
   }
+  res.send({ status: "success" });
   Auth.findOne({ uid: decodeURI(uid) }).then((result) => {
     console.log(result);
     if (!result) {
