@@ -1,14 +1,14 @@
 const Auth = require("../../../models/Authentication/authmodel");
 const jwt = require("jsonwebtoken");
 function login(req, res) {
-  uid = req.query.uid;
+  uid = encodeURI(req.query.uid);
   password = req.query.password;
   if (uid === undefined) {
     res.status(200).send({ status: "No Email id is provided" });
   } else if (password === undefined) {
     res.status(200).send({ status: "Password is not provided" });
   }
-  Auth.findOne({ uid: uid }).then((result) => {
+  Auth.findOne({ uid: decodeURI(uid) }).then((result) => {
     console.log(result);
     if (!result) {
       res.status(200).send({
