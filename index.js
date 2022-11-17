@@ -6,12 +6,7 @@ require("dotenv").config();
 const app = express();
 // //Middleware to handle the json data
 app.use(express.json());
-app.use(cors(), (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  next();
-});
+app.use(cors());
 
 var router = require("./routes/userroutes");
 app.use(router);
